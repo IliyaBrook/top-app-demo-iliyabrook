@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
         icons: {
             icon: '/someicong.ico'
         }
-    }
+    };
 }
 
 export default function Home(): ReactElement {
@@ -38,7 +38,7 @@ export default function Home(): ReactElement {
                 <P size="large">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias amet aperiam asperiores
                 </P>
-                <Rating/>
+                <Rating rating={4}/>
             </Htag>
         </div>
     );
