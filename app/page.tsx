@@ -38,7 +38,7 @@ export default function Home(): ReactElement {
                 <P size="large">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias amet aperiam asperiores
                 </P>
-                <Rating rating={4}/>
+                <Rating canEdit={true}/>
             </Htag>
         </div>
     );

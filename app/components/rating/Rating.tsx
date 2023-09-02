@@ -7,7 +7,7 @@ import styles from './Rating.module.scss';
 import RatingStars from './RatingStar.svg';
 import classNames from "classnames";
 
-export const Rating = ({rating, classNamesArray = []}: RatingProps): ReactElement => {
+export const Rating = ({rating, classNamesArray = [], canEdit = false}: RatingProps): ReactElement => {
     const [state, setState] = useState(rating || 0);
 
     useEffect(() => {
@@ -16,16 +16,31 @@ export const Rating = ({rating, classNamesArray = []}: RatingProps): ReactElemen
         }
     }, [rating]);
 
+
+    const onSetRating = (rating: number) => {
+        if (canEdit) {
+            setState(rating);
+        }
+    };
+
+    const onChangeDisplay = (rating: number) => {
+        if (canEdit) {
+            setState(rating);
+        }
+    };
+
+
     return (
         <div className={classNames([styles.ratingLayout, ...classNamesArray])}>
             {[...Array(5)].map((_, index: number) => {
                 const fillValue = index < state ? "#7653FC" : "#E2E2E2";
                 return <RatingStars
                     className={styles.starElement}
-                    onClick={() => setState(index + 1) }
+                    style={{cursor: canEdit ? "pointer" : "default"}}
                     fill={fillValue}
                     key={`active_star_${index}`}
-
+                    onClick={() =>  onSetRating(index + 1)}
+                    // onMouseEnter={() => onChangeDisplay(index + 1)}
                 />;
             })}
         </div>
