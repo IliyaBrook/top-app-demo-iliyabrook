@@ -1,5 +1,16 @@
 import Image from 'next/image';
 import {ReactElement} from "react";
+import {Metadata} from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+    // for example get data from backend
+    return {
+        title: 'ComputedMeta',
+        icons: {
+            icon: '/someicong.ico'
+        }
+    }
+}
 
 export default function Home(): ReactElement {
     return (
