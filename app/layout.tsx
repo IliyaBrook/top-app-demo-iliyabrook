@@ -1,9 +1,14 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import './globals.scss'
+import {Inter, Open_Sans} from 'next/font/google'
 import React from "react";
+import classnames from "classnames";
 
-const inter = Inter({ subsets: ['latin'] })
+
+const inter = Inter({subsets: ['latin']})
+const openSans = Open_Sans({
+    subsets: ['latin'],
+    weight: ['300', '400', '500', '700']
+})
 
 // export const metadata: Metadata = {
 //   title: 'Next js react course',
@@ -11,15 +16,20 @@ const inter = Inter({ subsets: ['latin'] })
 // }
 
 
-
 export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
+                                       children,
+                                   }: {
+    children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
-  )
+    return (
+        <html lang="en">
+        <body
+            className={classnames([
+                openSans.className
+            ])}
+        >
+        {children}
+        </body>
+        </html>
+    )
 }
