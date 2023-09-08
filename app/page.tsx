@@ -1,10 +1,7 @@
-import Image from 'next/image';
 import React, {ReactElement} from "react";
 import {Metadata} from "next";
-import {Htag, P} from "@/app/components";
-import {Button} from "@/app/components/Button/Button";
-import Logo from '@/public/vercel.svg'
-import {Rating} from "@/app/components/rating/Rating";
+import styles from './page.module.scss';
+import {Footer, Header, Sidebar} from '@/app/components';
 
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -19,27 +16,13 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Home(): ReactElement {
     return (
-        <div>
-            <Htag tag='h1'>
-                <Button
-                    appearance="primary"
-                    arrow="right"
-                >
-                    test button
-                </Button>
+        <main className={styles.main}>
+            <Header/>
+            <Sidebar/>
+            <div>
 
-                <Button
-                    appearance="ghost">
-                    test button
-                </Button>
-                <Logo
-                    width={50}
-                />
-                <P size="large">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias amet aperiam asperiores
-                </P>
-                <Rating canEdit={true}/>
-            </Htag>
-        </div>
+            </div>
+            <Footer/>
+        </main>
     );
 }
