@@ -1,11 +1,12 @@
 'use client';
 
 import {ReactElement} from "react";
+import {HeaderProps} from "@/app/components/Header/Header.props";
 
-export const Header = (): ReactElement => {
+export const Header = ({className, children}: HeaderProps): ReactElement => {
     return (
-        <div>
-
+        <div className={className}>
+            {children}
         </div>
     );
 };

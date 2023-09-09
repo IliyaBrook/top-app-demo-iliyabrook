@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React, {ReactElement} from "react";
 import {Metadata} from "next";
 import {Htag, P} from "@/app/components";
@@ -29,7 +28,9 @@ export default function Home(): ReactElement {
                 </Button>
 
                 <Button
-                    appearance="ghost">
+                    appearance="ghost"
+                    arrow="down"
+                >
                     test button
                 </Button>
                 <Logo
