@@ -1,0 +1,36 @@
+.footerWrapper {
+  display: grid;
+  font-weight: 400;
+  padding: 20px 10px;
+  grid-template-columns: 8fr 1fr 1fr;
+  row-gap: 10px;
+  grid-template-areas:
+        "copyrightNotice userAgreement privacyPolicy";
+  column-gap: 30px;
+  white-space: nowrap;
+  background-color: var(--primary);
+  color: var(--gray-light);
+}
+
+.copyrightNotice {
+  grid-area: copyrightNotice;
+}
+
+.userAgreement {
+  grid-area: userAgreement;
+}
+
+.privacyPolicy {
+  grid-area: privacyPolicy;
+}
+
+@media (max-width: 920px) {
+.footerWrapper {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+        "copyrightNotice . ."
+        "userAgreement . ."
+        "privacyPolicy . .";
+  text-align: left;
+  };
+}

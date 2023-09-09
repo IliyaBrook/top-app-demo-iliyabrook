@@ -29,12 +29,17 @@ export default function RootLayout({children}: {
                 openSans.className
             ])}
         >
-        <div className={styles.wrapper}>
-            <Header className={styles.header}/>
-            <Sidebar className={styles.sidebar}/>
-            {children}
-            <Footer className={styles.footer}/>
-        </div>
+            <div className={styles.wrapper}>
+                <Header
+                    className={styles.header}
+                    text="Заголовок 1"
+                />
+                <Sidebar className={styles.sidebar}/>
+                <div className={styles.body}>
+                    {children}
+                </div>
+                <Footer className={styles.footer}/>
+            </div>
         </body>
         </html>
     );

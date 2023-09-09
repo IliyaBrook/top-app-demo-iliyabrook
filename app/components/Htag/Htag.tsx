@@ -2,21 +2,13 @@ import React from 'react';
 import {ReactElement} from "react";
 import {HtagProps} from "@/app/components/Htag/Htag.props";
 
-export const Htag = ({tag = 'h1', children}: HtagProps): ReactElement => {
+export const Htag = ({tag = 'h1', children, ...props}: HtagProps): ReactElement => {
 
-    const renderHtag = () => {
-        switch (tag) {
-            case 'h1':
-                return <h1>{children}</h1>;
-            case 'h2':
-                return <h2>{children}</h2>;
-            case 'h3':
-                return <h3>{children}</h3>;
-            default:
-                return <></>;
-        }
-    };
+    const Tag = tag;
 
-
-    return <div>{renderHtag()}</div>;
+    return (
+        <div {...props}>
+            <Tag>{children}</Tag>
+        </div>
+    );
 };
