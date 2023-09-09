@@ -2,7 +2,7 @@ import React, {ReactElement} from 'react';
 import {Button, Htag, P} from "@/app/components";
 import Logo from "@/public/vercel.svg";
 import {Rating} from "@/app/components/rating/Rating";
-import styles from './Body.module.css';
+import styles from './Body.module.scss';
 
 export const Body = (): ReactElement => {
     return (

@@ -44,7 +44,7 @@ export const Rating = ({rating, classNamesArray = [], canEdit = false}: RatingPr
                     className={styles.starElement}
                     style={{cursor: canEdit ? "pointer" : "default"}}
                     fill={fillValue}
-                    key={`active_star_${index}`}
+                    key={`active_${index}`}
                     onClick={() => onSetRating(index + 1)}
                     onMouseEnter={() => onChangeDisplay(index + 1)}
                     onMouseLeave={() => onChangeDisplay(state)}

@@ -1,6 +1,7 @@
 import React, {ReactElement} from "react";
 import {Metadata} from "next";
-import {getMnu} from "@/api/menu";
+import {Header} from "@/app/components/Header/Header";
+import {Body} from "@/app/components/Body/Body";
 
 export async function generateMetadata(): Promise<Metadata> {
     // for example get data from backend
@@ -20,10 +21,8 @@ export default async function Home(): Promise<ReactElement> {
 
     return (
         <main>
-           <div>
-               {/*<div>{JSON.stringify(menu)}</div>*/}
-               {/*<div>{menu.length}</div>*/}
-           </div>
+
+           <Body/>
         </main>
     );
 }
