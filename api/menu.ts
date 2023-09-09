@@ -7,8 +7,13 @@ export async function getMnu(firstCategory: number): Promise<MenuItem[]> {
         body: JSON.stringify({
             firstCategory
         }),
-        headers: new Headers({'content-type': 'application/json'})
+        headers: new Headers({'content-type': 'application/json'}),
+        next: {
+            revalidate: 10,
+            // если мы хотим валидировать данные с помощью next api
+            //нужно создать файл api\menu.ts
+            // tags: ['menu']
+        },
     });
-    console.log('res: ', res);
     return res.json();
 }

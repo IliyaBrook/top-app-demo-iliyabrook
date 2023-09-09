@@ -17,13 +17,12 @@ export async function generateMetadata(): Promise<Metadata> {
 // });
 
 export default async function Home(): Promise<ReactElement> {
-    const menu = await getMnu(0);
-    console.log('menu from server: ', menu);
+
     return (
         <main>
            <div>
-               <div>{JSON.stringify(menu)}</div>
-               <div>{menu.length}</div>
+               {/*<div>{JSON.stringify(menu)}</div>*/}
+               {/*<div>{menu.length}</div>*/}
            </div>
         </main>
     );
