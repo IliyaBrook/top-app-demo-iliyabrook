@@ -9,10 +9,7 @@ export async function getMnu(firstCategory: number): Promise<MenuItem[]> {
         }),
         headers: new Headers({'content-type': 'application/json'}),
         next: {
-            revalidate: 10,
-            // если мы хотим валидировать данные с помощью next api
-            //нужно создать файл api\menu.ts
-            // tags: ['menu']
+            revalidate: 10
         },
     });
     return res.json();
