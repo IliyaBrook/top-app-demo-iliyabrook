@@ -3,9 +3,9 @@ import {ReactElement, useLayoutEffect, useState} from "react";
 import {getMnu} from "@/api/menu";
 import styles from './BuildLevels.module.scss';
 import classnames from "classnames";
+import { motion , useReducedMotion } from 'framer-motion';
 
 export const BuildSecondLevel = ({pathname, menuData}: {pathname: string, menuData: FirstLevelMenuItem}): ReactElement => {
-
     const [secondLevelItems, setSecondLevelItems] = useState<MenuItem[]>([]);
 
     useLayoutEffect(() => {
@@ -19,13 +19,16 @@ export const BuildSecondLevel = ({pathname, menuData}: {pathname: string, menuDa
 
 
     return (
-        <ul className={styles.secondBlock}>
+        <motion.ul
+            layout
+            className={styles.secondBlock}
+        >
             {secondLevelItems.map((m) => {
                 if (m.pages.map(p => p.alias).includes(pathname.split('/')[2])) {
                     m.isOpened = true;
                 }
                 return (
-                    <div key={m._id.secondCategory}>
+                    <motion.li key={m._id.secondCategory}>
                         <div className={styles.secondLevel}>
                             {m._id.secondCategory}
                         </div>
@@ -36,9 +39,9 @@ export const BuildSecondLevel = ({pathname, menuData}: {pathname: string, menuDa
                         >
 
                         </div>
-                    </div>
+                    </motion.li>
                 );
             })}
-        </ul>
+        </motion.ul>
     );
 };
