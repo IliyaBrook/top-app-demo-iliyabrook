@@ -14,7 +14,6 @@ export const Sidebar = (): ReactElement => {
         <div>
             <SidebarContext.Provider value={pathname}>
                 <nav role='navigation'>
-
                     <BuildFirstLevel pathname={pathname}/>
                 </nav>
             </SidebarContext.Provider>

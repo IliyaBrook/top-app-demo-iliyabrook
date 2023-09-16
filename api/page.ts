@@ -1,7 +1,8 @@
 import {API} from "@/app/api";
 import {TopPageModel} from "@/interfaces/page.interface";
+import {IGetPageResponse} from "@/api/interfaces";
 
-export async function getPage(alias: string): Promise<TopPageModel | null> {
+export async function getPage(alias: string): Promise<IGetPageResponse | null> {
     const res = await fetch(API.topPage.byAlias + alias, {
         next: {
             // если мы хотим валидировать данные с помощью next api
