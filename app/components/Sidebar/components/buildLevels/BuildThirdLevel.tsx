@@ -36,9 +36,7 @@ export const BuildThirdLevel = ({pages, route, isOpened, pathname}: {
                             })}
                             aria-current={`/${route}/${p.alias}` === pathname ? 'page' : false}
                         >
-                            <div>
-                                {isOpened && p.category}
-                            </div>
+                            {isOpened && p.category}
                         </div>
                     </Link>
                 </motion.div>
