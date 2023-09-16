@@ -1,3 +1,6 @@
+
+This project is a revamped version of the Next.js 13 course project, now featuring new routers and a brand new app router. The transformation has been undertaken to enhance the functionality and to integrate the latest features available in the technology stack. The original repository of the project can be found at [Top App Demo](https://github.com/AlariCode/top-app-demo).
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

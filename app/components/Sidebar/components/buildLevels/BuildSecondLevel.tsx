@@ -4,6 +4,7 @@ import {getMnu} from "@/api/menu";
 import styles from './BuildLevels.module.scss';
 import classnames from "classnames";
 import { motion , useReducedMotion } from 'framer-motion';
+import {BuildThirdLevel} from "@/app/components/Sidebar/components/buildLevels/BuildThirdLevel";
 
 export const BuildSecondLevel = ({pathname, menuData}: {pathname: string, menuData: FirstLevelMenuItem}): ReactElement => {
     const [secondLevelItems, setSecondLevelItems] = useState<MenuItem[]>([]);
@@ -37,7 +38,12 @@ export const BuildSecondLevel = ({pathname, menuData}: {pathname: string, menuDa
                                 {[styles.secondLevelBlockOpen]: m.isOpened}
                             ])}
                         >
-
+                            <BuildThirdLevel
+                                pages={m.pages}
+                                route={menuData.route}
+                                isOpened={m.isOpened ?? false}
+                                pathname={pathname}
+                            />
                         </div>
                     </motion.li>
                 );
