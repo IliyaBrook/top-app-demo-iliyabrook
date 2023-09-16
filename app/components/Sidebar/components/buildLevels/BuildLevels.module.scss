@@ -1,21 +1,17 @@
-.secondLevel{
-
-}
-
-.firstLevel{
-  .secondLevelItem{
+.firstLevel {
+  .secondLevelItem {
 
   }
 }
 
-.active{
-  svg{
+.active {
+  svg {
     fill: var(--active);
   }
 }
 
-.inactive{
-  svg{
+.inactive {
+  svg {
     fill: var(--sidenavInactive);
   }
 }
@@ -77,6 +73,14 @@
   border-left: 1px solid #DFDFDF;
 }
 
+.secondLevelActive {
+  color: var(--primary);
+  font-weight: bold;
+
+  border-left: 1px solid #DFDFDF;
+  padding: 0 0 0 5px;
+}
+
 .secondLevelBlock {
   overflow: hidden;
 
@@ -86,7 +90,10 @@
 }
 
 .secondLevelBlockOpen {
-
+  border-left: 1px solid #DFDFDF;
+  margin-top: 15px;
+  margin-left: 12px;
+  padding: 0 0 0 5px;
 }
 
 .thirdLevel {
@@ -108,3 +115,10 @@
   color: var(--primary);
 }
 
+.thirdLevelLinks {
+  margin-top: 15px;
+  margin-left: 12px;
+  padding: 0 0 0 10px;
+  list-style: none;
+  border-left: 1px solid #DFDFDF;
+}

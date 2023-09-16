@@ -17,7 +17,6 @@ export const BuildFirstLevel = ({pathname}: { pathname: string }) => {
                     ])}
                 >
                     <Link href={`/${m.route}`}>
-
                         <div className={classNames(styles.firstLevel, {
                             [styles.firstLevelActive]: `/${m.route}` === pathname
                         })}>
@@ -25,7 +24,13 @@ export const BuildFirstLevel = ({pathname}: { pathname: string }) => {
                             <span>{m.name}</span>
                         </div>
                     </Link>
-                    {`/${m.route}` === pathname && <BuildSecondLevel menuData={m} pathname={pathname}/>}
+                    {`/${m.route}` === pathname && (
+                        (
+                            <div className={styles.secondLevelActive}>
+                                <BuildSecondLevel menuData={m} pathname={pathname}/>
+                            </div>
+                        )
+                    )}
                 </li>
             ))}
         </ul>

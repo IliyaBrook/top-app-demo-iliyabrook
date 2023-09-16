@@ -3,7 +3,7 @@ import {ReactElement, useLayoutEffect, useState} from "react";
 import {getMnu} from "@/api/menu";
 import styles from './BuildLevels.module.scss';
 import classnames from "classnames";
-import { motion , useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {BuildThirdLevel} from "@/app/components/Sidebar/components/buildLevels/BuildThirdLevel";
 
 export const BuildSecondLevel = ({pathname, menuData}: {pathname: string, menuData: FirstLevelMenuItem}): ReactElement => {
@@ -29,14 +29,28 @@ export const BuildSecondLevel = ({pathname, menuData}: {pathname: string, menuDa
                     m.isOpened = true;
                 }
                 return (
-                    <motion.li key={m._id.secondCategory}>
-                        <div className={styles.secondLevel}>
+                    <motion.li
+                        key={m._id.secondCategory}
+                        onClick={() => {
+                            setSecondLevelItems(prev => prev.map(item => {
+                                return {
+                                    ...item,
+                                    isOpened: item._id.secondCategory === m._id.secondCategory ? !item.isOpened : false
+                                };
+                            }));
+                            console.log('m:', m)
+                        }}
+                    >
+                        <div
+                            className={classnames([
+                                styles.secondLevel,
+                                {[styles.secondLevelActive]: m.isOpened}
+                            ])}
+                        >
                             {m._id.secondCategory}
                         </div>
                         <div
-                            className={classnames(styles.secondLevelBlock, [
-                                {[styles.secondLevelBlockOpen]: m.isOpened}
-                            ])}
+                            className={styles.secondLevelBlockOpen}
                         >
                             <BuildThirdLevel
                                 pages={m.pages}

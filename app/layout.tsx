@@ -7,7 +7,6 @@ import {Sidebar} from "@/app/components/Sidebar/Sidebar";
 import {Footer} from "@/app/components/Footer/Footer";
 import styles from './layout.module.scss';
 import {Metadata} from "next";
-
 const openSans = Open_Sans({
     subsets: ['latin'],
     weight: ['300', '400', '500', '700']
