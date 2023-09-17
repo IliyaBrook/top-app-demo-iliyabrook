@@ -12,21 +12,12 @@ export const BuildThirdLevel = ({pages, route, isOpened, pathname}: {
     pathname: string
 }): ReactElement => {
 
-    const shouldReduceMotion = useReducedMotion();
-
-    const variantsChildren = {
-        visible: {
-            opacity: 1,
-            height: 29
-        },
-        hidden: {opacity: shouldReduceMotion ? 1 : 0, height: 0}
-    };
-
     return (
         <>
             {pages.map(p => (
                 <motion.div
-                    key={p._id} variants={variantsChildren}
+                    key={p._id}
+                    whileHover={{scale: 1.03}}
                 >
                     <Link href={`/${route}/${p.alias}`}>
                         <div

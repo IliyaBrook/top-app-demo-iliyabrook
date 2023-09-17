@@ -22,6 +22,7 @@ export const BuildSecondLevel = ({pathname, menuData}: {pathname: string, menuDa
     return (
         <motion.ul
             layout
+            transition={{ duration: 0.5 }}
             className={styles.secondBlock}
         >
             {secondLevelItems.map((m) => {
@@ -38,17 +39,17 @@ export const BuildSecondLevel = ({pathname, menuData}: {pathname: string, menuDa
                                     isOpened: item._id.secondCategory === m._id.secondCategory ? !item.isOpened : false
                                 };
                             }));
-                            console.log('m:', m)
                         }}
                     >
-                        <div
+                        <motion.div
+                            whileHover={{scale: 1.03}}
                             className={classnames([
                                 styles.secondLevel,
                                 {[styles.secondLevelActive]: m.isOpened}
                             ])}
                         >
                             {m._id.secondCategory}
-                        </div>
+                        </motion.div>
                         <div
                             className={styles.secondLevelBlockOpen}
                         >
