@@ -1,5 +1,5 @@
-import {createContext, useState} from "react";
-import {RouteDataInterface, SideBarContextInterface} from "@/interfaces/context.interfaces";
+import {createContext} from "react";
+import {SideBarContextInterface} from "@/interfaces/context.interfaces";
 
 
-export const SideBarContext = createContext<SideBarContextInterface | undefined>(undefined);
+export const SideBarContext = createContext<SideBarContextInterface | undefined >(undefined);

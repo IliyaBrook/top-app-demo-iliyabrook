@@ -17,6 +17,7 @@ export interface RouteDataInterface {
     _id: {
         secondCategory: string;
     };
+    isOpened?: boolean;
     pages: PageInterface[];
 }
 

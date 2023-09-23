@@ -1,5 +1,5 @@
 'use client';
-import React, {ReactElement, useEffect, useState} from "react";
+import React, {ReactElement, useEffect, useMemo, useRef, useState} from "react";
 import {usePathname} from "next/navigation";
 import {SidebarProps} from "@/app/components/Sidebar/Sidebar.props";
 import {SideBarContext} from "@/app/contexts";
@@ -17,6 +17,7 @@ import { motion } from 'framer-motion';
 export const Sidebar = (props: SidebarProps): ReactElement => {
     const [routeData, setRouteData] = useState<MenuItem[]>([]);
     const {className} = props;
+    const activeElementsRef = useRef(null)
 
     const pathname = usePathname();
 
@@ -24,6 +25,9 @@ export const Sidebar = (props: SidebarProps): ReactElement => {
         open: { opacity: 1, y: 0 },
         closed: { opacity: 0, y: "-100%" }
     };
+
+
+    console.log('ref log:', activeElementsRef.current)
 
     useEffect(() => {
         if (pathname) {
@@ -50,13 +54,13 @@ export const Sidebar = (props: SidebarProps): ReactElement => {
             <SideBarContext.Provider value={{routeData, setRouteData}}>
                 <nav role='navigation'>
                     <ul className={styles.firstLevelList}>
-                        {firstLevelMenu.map(m => (
+                        {firstLevelMenu.map((m, index) => (
                             <li
                                 key={m.route}
                                 className={classNames([
                                     styles.sideBarLi,
                                     {[styles.firstLevelActive]: pathname === `/${m.route}`},
-                                    {[styles.firstLevelInactive]: pathname !== `/${m.route}`},
+                                    {[styles.firstLevelInactive]: pathname !== `/${m.route}`}
                                 ])}
                             >
                                 <Link href={`/${m.route}`}>
@@ -70,6 +74,7 @@ export const Sidebar = (props: SidebarProps): ReactElement => {
                                             animate="open"
                                             exit="closed"
                                             variants={variants}
+                                            transition={{ delay: index * 0.2 }}
                                         >
                                             <BuildFirstLevel
                                                 menuData={m}
