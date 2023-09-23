@@ -6,12 +6,13 @@ import {ReactElement} from "react";
 // }
 
 
-
-export default async function Category({params}: {params: {name: string}}): Promise<ReactElement> {
+// {params}: {params: {name: string}}
+export default async function Category(props): Promise<ReactElement> {
+    console.log('params: ', props);
     return (
         <div>
             <pre>
-                {JSON.stringify(params.route)}
+                {/*{JSON.stringify(params.route)}*/}
             </pre>
         </div>
     );

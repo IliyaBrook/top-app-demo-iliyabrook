@@ -1,8 +1,9 @@
 import {AnimatePresence, motion} from "framer-motion";
 import classnames from "classnames";
-import {ReactElement, useContext, useEffect, useState} from "react";
+import React, {ReactElement, useContext, useEffect, useState} from "react";
 import {SideBarContext} from "@/app/contexts";
 import {MenuItem} from "@/interfaces/menu.interface";
+import {getPage} from "@/api/page";
 
 interface NavCollapseItemProps<T = any> {
     title: string,
@@ -11,31 +12,34 @@ interface NavCollapseItemProps<T = any> {
     level?: number,
     item?: T,
     children?: ReactElement | ReactElement[]
+    onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
-export const NavCollapseItem = ({title, activeClassName = '', classNames = [], level, item, children}: NavCollapseItemProps) => {
+export const NavCollapseItem = ({title, activeClassName = '', classNames = [], level, item, children, onClick}: NavCollapseItemProps) => {
     const context = useContext(SideBarContext);
     return (
         <motion.div
             className={classnames([
                 ...classNames
             ])}
-            onClick={() => {
-                if (level === 2) {
+            onClick={event => {
+                if (level === 1) {
                     if (context?.setRouteData) {
                         context.setRouteData(prev => {
                             return prev.map((m: MenuItem) => {
                                 if (m._id.secondCategory === title) {
                                     return {
                                         ...m,
-                                        isOpened: !m.isOpened
+                                        // isOpened: !m.isOpened
+                                        isOpened: true
                                     }
                                 }
                                 return m;
                             }) as MenuItem[];
                         });
                     }
-                } else if (level === 3) {
+                } else if (level === 2) {
+
                     if (context?.setRouteData) {
                         context.setRouteData(prev => {
                             return prev.map((m: MenuItem) => {
@@ -45,10 +49,11 @@ export const NavCollapseItem = ({title, activeClassName = '', classNames = [], l
                                         if (p.category === title) {
                                             return {
                                                 ...p,
-                                                isOpened: !p.isOpened  // Инвертируем текущее состояние
+                                                // isOpened: !m.isOpened
+                                                isOpened: true
                                             }
                                         }
-                                        return p;  // Оставляем другие элементы без изменений
+                                        return p;
                                     })
                                 }
                             });
@@ -63,6 +68,7 @@ export const NavCollapseItem = ({title, activeClassName = '', classNames = [], l
                     className={classnames([
                         {[activeClassName]: item?.isOpened}
                     ])}
+                    onClick={onClick}
                 >
                     <motion.div
                         whileHover={{scale: 1.03}}

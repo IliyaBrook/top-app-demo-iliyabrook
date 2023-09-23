@@ -26,9 +26,6 @@ export const Sidebar = (props: SidebarProps): ReactElement => {
         closed: { opacity: 0, y: "-100%" }
     };
 
-
-    console.log('ref log:', activeElementsRef.current)
-
     useEffect(() => {
         if (pathname) {
             const currentCategoryData = firstLevelMenu.find(m => m.route === pathname.split('/')[1]);
