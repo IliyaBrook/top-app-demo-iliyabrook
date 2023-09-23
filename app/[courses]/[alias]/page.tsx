@@ -1,5 +1,5 @@
 import {ReactElement} from "react";
 
-export default async function Pages(props): Promise<ReactElement> {
+export default async function Pages(): Promise<any> {
 
 }
