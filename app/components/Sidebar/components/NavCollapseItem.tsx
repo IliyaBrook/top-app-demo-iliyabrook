@@ -20,6 +20,7 @@ export const NavCollapseItem = ({title, activeClassName = '', classNames = [], l
             className={classnames([
                 ...classNames
             ])}
+            // Внутри вашего onClick обработчика
             onClick={() => {
                 if (level === 2) {
                     if (context?.setRouteData) {
@@ -28,13 +29,10 @@ export const NavCollapseItem = ({title, activeClassName = '', classNames = [], l
                                 if (m._id.secondCategory === title) {
                                     return {
                                         ...m,
-                                        isOpened: true
+                                        isOpened: !m.isOpened
                                     }
                                 }
-                                return {
-                                    ...m,
-                                    isOpened: false
-                                }
+                                return m;
                             }) as MenuItem[];
                         });
                     }
@@ -48,13 +46,10 @@ export const NavCollapseItem = ({title, activeClassName = '', classNames = [], l
                                         if (p.category === title) {
                                             return {
                                                 ...p,
-                                                isOpened: true
+                                                isOpened: !p.isOpened  // Инвертируем текущее состояние
                                             }
                                         }
-                                        return {
-                                            ...p,
-                                            isOpened: false
-                                        }
+                                        return p;  // Оставляем другие элементы без изменений
                                     })
                                 }
                             });
@@ -62,6 +57,7 @@ export const NavCollapseItem = ({title, activeClassName = '', classNames = [], l
                     }
                 }
             }}
+
         >
 
                 <span
