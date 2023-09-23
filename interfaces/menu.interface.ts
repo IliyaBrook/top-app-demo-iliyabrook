@@ -6,6 +6,11 @@ export interface PageItem {
 	title: string;
 	_id: string;
 	category: string;
+	isOpened?: boolean;
+}
+
+interface ExtendedPageItem extends PageItem {
+	isOpened?: boolean;
 }
 
 export interface MenuItem {
@@ -13,7 +18,7 @@ export interface MenuItem {
 		secondCategory: string;
 	};
 	isOpened?: boolean;
-	pages: PageItem[];
+	pages: ExtendedPageItem[];
 }
 
 export interface FirstLevelMenuItem {

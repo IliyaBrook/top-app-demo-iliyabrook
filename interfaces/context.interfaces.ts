@@ -22,7 +22,7 @@ export interface RouteDataInterface {
 
 export interface SideBarContextInterface {
     routeData: RouteDataInterface[];
-    setRouteData: (routeData: (prev) => any) => void;
+    setRouteData: (routeData: (prev: any) => any) => void;
 }
 
 export interface FirstLevelMenuItem {

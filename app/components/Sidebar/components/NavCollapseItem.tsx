@@ -1,24 +1,25 @@
-import {motion} from "framer-motion";
+import {AnimatePresence, motion} from "framer-motion";
 import classnames from "classnames";
-import {ReactElement, useContext} from "react";
+import {ReactElement, useContext, useEffect, useState} from "react";
 import {SideBarContext} from "@/app/contexts";
 import {MenuItem} from "@/interfaces/menu.interface";
 
-interface NavCollapseItemProps {
+interface NavCollapseItemProps<T = any> {
     title: string,
     classNames?: string[],
     activeClassName?: string,
     level?: number,
-    item?: MenuItem,
+    item?: T,
     children?: ReactElement | ReactElement[]
 }
 
 export const NavCollapseItem = ({title, activeClassName = '', classNames = [], level, item, children}: NavCollapseItemProps) => {
-
-    const context= useContext(SideBarContext);
-
+    const context = useContext(SideBarContext);
     return (
         <motion.div
+            className={classnames([
+                ...classNames
+            ])}
             onClick={() => {
                 if (level === 2) {
                     if (context?.setRouteData) {
@@ -34,28 +35,47 @@ export const NavCollapseItem = ({title, activeClassName = '', classNames = [], l
                                     ...m,
                                     isOpened: false
                                 }
-                            } );
+                            }) as MenuItem[];
+                        });
+                    }
+                } else if (level === 3) {
+                    if (context?.setRouteData) {
+                        context.setRouteData(prev => {
+                            return prev.map((m: MenuItem) => {
+                                return {
+                                    ...m,
+                                    pages: m.pages.map(p => {
+                                        if (p.category === title) {
+                                            return {
+                                                ...p,
+                                                isOpened: true
+                                            }
+                                        }
+                                        return {
+                                            ...p,
+                                            isOpened: false
+                                        }
+                                    })
+                                }
+                            });
                         });
                     }
                 }
             }}
-            whileHover={{scale: 1.03}}
-            className={classnames([
-                ...classNames
-            ])}
         >
-            <span
-                className={classnames([
-                    {[activeClassName]: item?.isOpened}
-                ])}
-            >
-                <div>
-                    {title}
-                </div>
-                <div>
-                    {item?.isOpened && children}
-                </div>
-            </span>
+
+                <span
+                    className={classnames([
+                        {[activeClassName]: item?.isOpened}
+                    ])}
+                >
+                    <div>
+                        {title}
+                    </div>
+                    <div>
+                        {item?.isOpened && children}
+                    </div>
+                </span>
         </motion.div>
     )
 }

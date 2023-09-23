@@ -17,7 +17,6 @@ export const BuildThirdLevel = ({pages, route, isOpened = false, pathname}: {
             {pages.map(p => (
                 <motion.div
                     key={p._id}
-                    whileHover={{scale: 1.03}}
                 >
                     <Link href={`/${route}/${p.alias}`}>
                         <div
