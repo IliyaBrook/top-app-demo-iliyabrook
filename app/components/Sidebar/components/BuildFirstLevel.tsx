@@ -31,7 +31,6 @@ export const BuildFirstLevel = ({secondLevelItems, pathname, menuData}: buildSec
             {secondLevelItems.map((m, idx) => {
                 return (
                     <motion.li
-
                         key={`second_level_key_${idx}`}
                     >
                         <motion.div>
@@ -44,7 +43,7 @@ export const BuildFirstLevel = ({secondLevelItems, pathname, menuData}: buildSec
                                 item={m}
                             >
                                 {m.pages.map(p => (
-                                    <div
+                                    <motion.div
                                         ref={activeLevelElemRef}
                                         key={`third_level_collapse_key_${p._id}`}
                                         className={classnames([
@@ -58,7 +57,7 @@ export const BuildFirstLevel = ({secondLevelItems, pathname, menuData}: buildSec
                                             level={3}
                                             item={p}
                                         />
-                                    </div>
+                                    </motion.div>
                                 ))}
                             </NavCollapseItem>
                         </motion.div>

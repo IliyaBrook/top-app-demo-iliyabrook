@@ -20,7 +20,6 @@ export const NavCollapseItem = ({title, activeClassName = '', classNames = [], l
             className={classnames([
                 ...classNames
             ])}
-            // Внутри вашего onClick обработчика
             onClick={() => {
                 if (level === 2) {
                     if (context?.setRouteData) {
@@ -65,9 +64,12 @@ export const NavCollapseItem = ({title, activeClassName = '', classNames = [], l
                         {[activeClassName]: item?.isOpened}
                     ])}
                 >
-                    <div>
+                    <motion.div
+                        whileHover={{scale: 1.03}}
+                        whileTap={{scale: 0.95}}
+                    >
                         {title}
-                    </div>
+                    </motion.div>
                     <div>
                         {item?.isOpened && children}
                     </div>
