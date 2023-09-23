@@ -49,17 +49,12 @@
 .secondLevel {
   margin-bottom: 10px;
   padding: 0;
-
   cursor: pointer;
   text-transform: uppercase;
-
   color: var(--gray-dark);
   border: none;
-
   background: none;
-
   font-size: 12px;
-
   font-weight: 300;
 }
 
@@ -73,12 +68,12 @@
   border-left: 1px solid #DFDFDF;
 }
 
+
 .secondLevelActive {
   color: var(--primary);
   font-weight: bold;
-
-  border-left: 1px solid #DFDFDF;
-  padding: 0 0 0 5px;
+  //border-left: 1px solid #DFDFDF;
+  //padding: 0 0 0 5px;
 }
 
 .secondLevelBlock {

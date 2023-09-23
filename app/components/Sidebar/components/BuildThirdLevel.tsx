@@ -1,11 +1,11 @@
 import {PageItem} from "@/interfaces/menu.interface";
 import React, {ReactElement} from "react";
-import styles from './BuildLevels.module.scss';
+import styles from '../Sidebar.module.scss';
 import classnames from "classnames";
 import {motion, useReducedMotion} from 'framer-motion';
 import Link from "next/link";
 
-export const BuildThirdLevel = ({pages, route, isOpened, pathname}: {
+export const BuildThirdLevel = ({pages, route, isOpened = false, pathname}: {
     pages: PageItem[],
     route: string,
     isOpened: boolean,
