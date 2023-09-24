@@ -7,6 +7,8 @@ import {Sidebar} from "@/app/components/Sidebar/Sidebar";
 import {Footer} from "@/app/components/Footer/Footer";
 import styles from './layout.module.scss';
 import {Metadata} from "next";
+import {firstLevelMenu} from "@/api/data";
+import {getMnu} from "@/api/menu";
 const openSans = Open_Sans({
     subsets: ['latin'],
     weight: ['300', '400', '500', '700']
@@ -18,9 +20,17 @@ export const metadata: Metadata = {
 };
 
 
-export default function RootLayout({children}: {
+export default async function RootLayout({children}: {
     children: React.ReactNode
 }) {
+    const firstLevelMenuData =  await Promise.allSettled(firstLevelMenu.map( async (menu) => {
+        const menuId = menu.id;
+        const coursesMenuData = await getMnu(menuId);
+        return {
+            params: {courses: menu.route, coursesMenuData},
+        };
+    }))
+
     return (
         <html lang="en">
         <body
@@ -31,9 +41,9 @@ export default function RootLayout({children}: {
             <div className={styles.wrapper}>
                 <Header
                     className={styles.header}
-                    text="Заголовок 1"
+                    text="Header num 1"
                 />
-                <Sidebar className={styles.sidebar}/>
+                <Sidebar className={styles.sidebar} menuData={firstLevelMenuData}/>
                 <div className={styles.body}>
                     {children}
                 </div>
