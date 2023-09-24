@@ -14,20 +14,6 @@ export interface SecondCategory {
     pages: SideBarPage[];
 }
 
-// export interface SideBarParams {
-//     courses: string;
-//     coursesMenuData: SecondCategory[];
-// }
-//
-// export interface SideBarValue {
-//     params: SideBarParams;
-// }
-
-// export interface MenuData {
-//     status: string;
-//     value: SideBarValue;
-// }
-
 interface Icon {
     key: null;
     ref: null;
@@ -38,22 +24,11 @@ interface Icon {
 
 
 
-export interface routeServerSideProps {
-    menuData: MenuData;
-    pathname: string;
-}
-
 export interface SideBarProps {
     className?: string;
     menuData: MenuData[];
 }
 
-//
-// export interface MenuParams {
-//     elementData: MenuData;
-//     params: SideBarParams;
-//     className?: string;
-// }
 
 
 interface ElementData {
@@ -64,21 +39,69 @@ interface ElementData {
 }
 
 export interface MenuParams {
-    courses: string;
-    coursesMenuData: SecondCategory[];
+    pages: string;
+    pagesMenuData: SecondCategory[];
 }
 
 export interface MenuData {
     params: {
-        courses: string;
-        coursesMenuData: any;
+        pages: string;
+        pagesMenuData: any;
     };
     elementData: ElementData;
 }
 
 export interface FirstLevelMenuProps extends MenuParams, ElementData {
-
+    pathname: string;
 }
 
+// second leve interfaces
+
+export interface SecondLevelData {
+    _id: {
+        secondCategory: string;
+    };
+    pages: SideBarPage[];
+}
+
+export interface SecondLevelProps {
+    secondLevelData: SecondLevelData[];
+    pathname: string;
+    isOpened: boolean;
+}
+
+export interface ThirdLevelDataPages {
+    alias: string;
+    title: string;
+    _id: string;
+    category: string;
+}
+
+export interface ThirdLevelDataId {
+    secondCategory: string
+}
+
+export interface ThirdLevelProps {
+    pages: ThirdLevelDataPages[];
+    _id: ThirdLevelDataId;
+    isOpened: boolean;
+}
+
+// MenuItem
 
 
+interface Page {
+    alias: string;
+    title: string;
+    _id: string;
+    category: string;
+}
+
+interface PagesMenuDataItem {
+    _id: {
+        secondCategory: string;
+    };
+    pages: Page[];
+}
+
+export type PagesMenuData = PagesMenuDataItem[];

@@ -1,16 +1,15 @@
+// app/courses/page.tsx
+
 import {firstLevelMenu} from "@/app/components/Sidebar/data";
-import {getMnu} from "@/api/menu";
+import {getMenu} from "@/api/menu";
+import {ReactElement} from "react";
+import {getActivePath} from "@/app/utils/serverSideUtils";
 
-export async function generateStaticParams() {
-    return firstLevelMenu.map( async (menu) => {
-        const menuId = menu.id;
-        const coursesMenuData = await getMnu(menuId);
-        return {
-            params: {courses: menu.route, coursesMenuData},
-        };
-    });
-}
+export default function CoursesPage(): ReactElement {
 
-export default async function Courses({params: {courses}} : {params: { courses: string }}): Promise<any> {
-    // ваш код
+    return (
+        <div>
+            <h1>Courses</h1>
+        </div>
+    )
 }

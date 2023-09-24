@@ -21,13 +21,12 @@ export const Sidebar = ({className, menuData}: SideBarProps): ReactElement => {
                             ...params,
                             pathname
                         }
+
                         return (
-                            (
-                                <FirstLevelMenu
-                                    {...firstLevelMenuData}
-                                    key={`first_level_${index}`}
-                                />
-                            )
+                            <FirstLevelMenu
+                                {...firstLevelMenuData}
+                                key={`first_level_${index}`}
+                            />
                         )
                     })}
                 </ul>

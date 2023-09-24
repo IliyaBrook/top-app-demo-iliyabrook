@@ -39,7 +39,6 @@ export const NavCollapseItem = ({title, activeClassName = '', classNames = [], l
                         });
                     }
                 } else if (level === 2) {
-
                     if (context?.setRouteData) {
                         context.setRouteData(prev => {
                             return prev.map((m: MenuItem) => {

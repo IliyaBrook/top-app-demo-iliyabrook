@@ -14,11 +14,8 @@
   }
 }
 
-.secondWrapper .borderActiveLevel {
-  border-left: 1px solid #DFDFDF;
-}
 .sideBarWrapper{
-  font-size: 14px;
+  font-size: 16px;
   margin-left: 10px;
   svg{
     margin-right: 10px;
@@ -26,47 +23,15 @@
   .firstLevelList {
     padding: 0;
     list-style: none;
-    .sideBarLi{
-      a{
-        display: flex;
-      }
-    }
-
     .secondWrapper {
       margin-top: 5px;
       list-style: none;
-      .borderActiveLevel{
-        border-left: 1px solid #DFDFDF;
-      }
-      padding: 0;
-      margin-left: 40px;
-      .secondLevel {
-        width: fit-content;
-        padding-left: 5px;
-        margin-bottom: 5px;
-        display: flex;
-        cursor: pointer;
-        text-transform: uppercase;
-        color: var(--gray-dark);
-        background: none;
-        .secondLevelActive {
-          margin-left: 5px;
-          color: var(--primary);
-        }
-      }
-    }
-    .thirdLevelWrapper{
-      margin-top: 10px;
-      margin-left: 12px;
-      padding: 0 0 0 10px;
-      .thirdLevel {
-        display: block;
-        margin-bottom: 10px;
-        cursor: pointer;
-        color: var(--gray-dark);
-        outline-offset: -1px;
-        font-size: 14px;
-      }
+      display: flex;
+      flex-direction: column;
+      width: fit-content;
+      margin-left: 3rem;
+      padding: 0 0 0 5px ;
+      @extend .borderActiveLevel;
     }
   }
 }

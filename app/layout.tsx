@@ -8,7 +8,7 @@ import {Footer} from "@/app/components/Footer/Footer";
 import styles from './layout.module.scss';
 import {Metadata} from "next";
 import {firstLevelMenu} from "@/app/components/Sidebar/data";
-import {getMnu} from "@/api/menu";
+import {getMenu} from "@/api/menu";
 import {MenuData} from "@/app/components/Sidebar/Sidebar.props";
 
 const openSans = Open_Sans({
@@ -27,16 +27,17 @@ export default async function RootLayout({children}: {
 }) {
     const firstLevelMenuData = await Promise.allSettled(firstLevelMenu.map(async (menu) => {
         const menuId = menu.id;
-        const coursesMenuData = await getMnu(menuId);
+        const pagesMenuData = await getMenu(menuId);
+        console.log('pagesMenuData:', JSON.stringify(pagesMenuData));
         return {
-            params: {courses: menu.route, coursesMenuData},
+            params: {pages: menu.route, pagesMenuData},
         };
     }));
 
     const filteredMenuData: MenuData[] = firstLevelMenuData
         .filter((result): result is PromiseFulfilledResult<any> => result.status === 'fulfilled')
         .map(result => {
-            const elementData = firstLevelMenu.find(item => item.route === result.value.params.courses);
+            const elementData = firstLevelMenu.find(item => item.route === result.value.params.pages);
             return {
                 ...result.value,
                 elementData

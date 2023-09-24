@@ -3,47 +3,33 @@ import styles from './Sidebar.module.scss';
 import classNames from "classnames";
 import Link from "next/link";
 import { FirstLevelMenuProps } from "@/app/components/Sidebar/Sidebar.props";
-export const FirstLevelMenu = ({coursesMenuData, courses, icon, route, name}: FirstLevelMenuProps) => {
+import {BuildSecondLevel} from "@/app/components/Sidebar/componentsOld/BuildSecondLevel";
+import {SecondLevelMenu} from "@/app/components/Sidebar/SecondLevelMenu";
+import { motion } from 'framer-motion';
 
-    const variants = {
-        open: { opacity: 1, y: 0 },
-        closed: { opacity: 0, y: "-100%" }
-    };
+export const FirstLevelMenu = ({pagesMenuData, pages, icon, route, name, pathname}: FirstLevelMenuProps) => {
+
+    const menuPathName = pathname.split('/')[1];
 
     return (
         <li
-
             className={classNames([
                 styles.sideBarLi,
-                // {[styles.firstLevelActive]: activePath === route},
-                // {[styles.firstLevelInactive]: activePath !== route}
+                {[styles.firstLevelActive]: menuPathName === route},
+                {[styles.firstLevelInactive]: menuPathName !== route}
             ])}
         >
-            {/*{*/}
-            {/*    firstLevelMenu.map(({icon, name, id, route}) => {*/}
-            {/*        return (*/}
-            {/*            <Link*/}
-            {/*                href={`/${courses}`}*/}
-            {/*            >*/}
-            {/*                {icon}*/}
-            {/*                <span>{name}</span>*/}
-            {/*            </Link>*/}
-            {/*        )*/}
-            {/*    })*/}
-            {/*}*/}
-
             <Link
-                href={`/${courses}`}
+                href={`/${pages}`}
             >
                 {icon as React.ReactNode}
                 <span>{name}</span>
+                <SecondLevelMenu
+                    secondLevelData={pagesMenuData}
+                    pathname={pathname}
+                    isOpened={menuPathName === route}
+                />
             </Link>
-
-            {/*{`/${route}` === activePath && (*/}
-            {/*    <React.Suspense>*/}
-
-            {/*    </React.Suspense>*/}
-            {/*)}*/}
         </li>
     );
 };
