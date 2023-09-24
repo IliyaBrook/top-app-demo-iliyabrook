@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 
 export async function generateStaticParams() {
     const menu = await getMnu(0);
-    console.log('menu:', menu)
     return menu.flatMap(item => item.pages.map(page => ({ params: { alias: page.alias } })));
 }
 

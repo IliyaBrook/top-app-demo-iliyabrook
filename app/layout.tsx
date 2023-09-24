@@ -7,29 +7,41 @@ import {Sidebar} from "@/app/components/Sidebar/Sidebar";
 import {Footer} from "@/app/components/Footer/Footer";
 import styles from './layout.module.scss';
 import {Metadata} from "next";
-import {firstLevelMenu} from "@/api/data";
+import {firstLevelMenu} from "@/app/components/Sidebar/data";
 import {getMnu} from "@/api/menu";
+import {MenuData} from "@/app/components/Sidebar/Sidebar.props";
+
 const openSans = Open_Sans({
     subsets: ['latin'],
     weight: ['300', '400', '500', '700']
 });
 
 export const metadata: Metadata = {
-  title: 'Next js react course',
-  description: 'This is project for learning Next.js'
+    title: 'Next js react course',
+    description: 'This is project for learning Next.js'
 };
 
 
 export default async function RootLayout({children}: {
     children: React.ReactNode
 }) {
-    const firstLevelMenuData =  await Promise.allSettled(firstLevelMenu.map( async (menu) => {
+    const firstLevelMenuData = await Promise.allSettled(firstLevelMenu.map(async (menu) => {
         const menuId = menu.id;
         const coursesMenuData = await getMnu(menuId);
         return {
             params: {courses: menu.route, coursesMenuData},
         };
-    }))
+    }));
+
+    const filteredMenuData: MenuData[] = firstLevelMenuData
+        .filter((result): result is PromiseFulfilledResult<any> => result.status === 'fulfilled')
+        .map(result => {
+            const elementData = firstLevelMenu.find(item => item.route === result.value.params.courses);
+            return {
+                ...result.value,
+                elementData
+            }
+        });
 
     return (
         <html lang="en">
@@ -38,17 +50,20 @@ export default async function RootLayout({children}: {
                 openSans.className
             ])}
         >
-            <div className={styles.wrapper}>
-                <Header
-                    className={styles.header}
-                    text="Header num 1"
-                />
-                <Sidebar className={styles.sidebar} menuData={firstLevelMenuData}/>
-                <div className={styles.body}>
-                    {children}
-                </div>
-                <Footer className={styles.footer}/>
+        <div className={styles.wrapper}>
+            <Header
+                className={styles.header}
+                text="Header num 1"
+            />
+            <Sidebar
+                className={styles.sidebar}
+                menuData={filteredMenuData}
+            />
+            <div className={styles.body}>
+                {children}
             </div>
+            <Footer className={styles.footer}/>
+        </div>
         </body>
         </html>
     );

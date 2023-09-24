@@ -21,7 +21,6 @@ interface NavBarLinkProps {
 
 export const NavBarLink = ({item, routeTo, variant = 'collapse', activeClassName = '', classNames = [], label}: NavBarLinkProps) => {
     const {alias, category, title, _id} = item;
-    console.log('item 33:', item)
     const [isActive, setActive] = useState<boolean>(false);
     switch (variant) {
         case 'collapse':
