@@ -6,6 +6,7 @@ export interface SideBarPage {
     _id: string;
     category: string;
     pathname: string;
+    secondLevelOpened: boolean;
 }
 
 export interface SecondCategory {

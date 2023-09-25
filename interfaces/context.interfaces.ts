@@ -1,5 +1,6 @@
 import React, { ReactElement, useState } from "react";
 import { TopLevelCategory } from './page.interface';
+import { Dispatch, SetStateAction } from "react";
 
 export interface PageInterface {
     alias: string;
@@ -22,8 +23,10 @@ export interface RouteDataInterface {
 }
 
 export interface SideBarContextInterface {
-    routeData: RouteDataInterface[];
-    setRouteData: (routeData: (prev: any) => any) => void;
+    firstLevelOpen: boolean;
+    setFirstLevelOpen: Dispatch<SetStateAction<boolean>>;
+    secondLevelOpen: boolean;
+    setSecondLevelOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface FirstLevelMenuItem {

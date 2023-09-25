@@ -1,4 +1,4 @@
-.borderActiveLevel{
+.borderActiveLevel {
   border-left: 1px solid #DFDFDF;
 }
 
@@ -14,25 +14,29 @@
   }
 }
 
-.sideBarWrapper{
+.sideBarWrapper {
   font-size: 16px;
   margin-left: 10px;
-  svg{
+
+  svg {
     margin-right: 10px;
   }
+
   .firstLevelList {
     padding: 0;
     list-style: none;
 
-    .firstLevelWrapper{
-      .firstLevelName{
+    .firstLevelWrapper {
+      .firstLevelName {
         position: relative;
-        .firstLevelLink{
+
+        .firstLevelLink {
           position: absolute;
           height: 125%;
           width: 100%;
         }
       }
+
       .secondWrapper {
         margin-top: 5px;
         list-style: none;
@@ -40,10 +44,27 @@
         flex-direction: column;
         width: fit-content;
         margin-left: 3rem;
-        padding: 0 0 0 5px ;
+        padding: 0 0 0 5px;
         @extend .borderActiveLevel;
-        .secondLevelName{
+
+        .secondLevelName {
           cursor: pointer;
+        }
+
+        .thirdLevelWrapper {
+          .fourthLevelWrapper {
+            position: relative;
+            margin: 5px 0;
+            width: fit-content;
+            .fourthLevelLink{
+              position: absolute;
+              height: 100%;
+              width: 100%;
+            }
+          }
+          .pageLinkWrapper{
+            
+          }
         }
       }
     }

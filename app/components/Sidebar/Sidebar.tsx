@@ -6,8 +6,6 @@ import styles from "@/app/components/Sidebar/Sidebar.module.scss";
 import classnames from "classnames";
 import {FirstLevelMenu} from "@/app/components/Sidebar/FirstLevelMenu";
 
-
-
 export const Sidebar = ({className, menuData}: SideBarProps): ReactElement => {
     const pathname = usePathname();
     return (
@@ -21,7 +19,6 @@ export const Sidebar = ({className, menuData}: SideBarProps): ReactElement => {
                             ...params,
                             pathname
                         }
-
                         return (
                             <FirstLevelMenu
                                 {...firstLevelMenuData}

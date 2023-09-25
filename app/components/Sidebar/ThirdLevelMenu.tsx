@@ -3,13 +3,20 @@ import {ThirdLevelProps} from "@/app/components/Sidebar/Sidebar.props";
 import {motion, useAnimation} from "framer-motion";
 import {FourthLevelMenu} from "@/app/components/Sidebar/FourthLevelMenu";
 import styles from './Sidebar.module.scss'
+import Link from "next/link";
+import {usePathname, useRouter} from "next/navigation";
 
-export const ThirdLevelMenu = ({pages, _id, isOpened, pathname, index}: ThirdLevelProps) => {
+export const ThirdLevelMenu = ({pages, _id, isOpened, index}: ThirdLevelProps) => {
+    const [secondLevelOpen, setSecondLevelOpen] = React.useState(false);
     const variants = {
-        open: { opacity: 1, y: 0 },
-        closed: { opacity: 0, y: "-100%" }
+        open: {opacity: 1, y: 0},
+        closed: {opacity: 0, y: "-100%"}
     };
     const {secondCategory} = _id;
+
+    const pathname = usePathname();
+    const router = useRouter();
+    const firstPartOfPath = pathname.split('/')[1];
 
     const controls = useAnimation();
     useEffect(() => {
@@ -26,22 +33,47 @@ export const ThirdLevelMenu = ({pages, _id, isOpened, pathname, index}: ThirdLev
             animate={controls}
             exit="closed"
             variants={variants}
-            transition={{ delay: index/2 * 0.1 }}
+            transition={{delay: index / 2 * 0.1}}
         >
-            <span className={styles.secondLevelName}>
-                {secondCategory}
-            </span>
+                 <motion.div
+                     whileHover={{scale: 1.03}}
+                     whileTap={{scale: 0.95}}
+                     className={styles.secondLevelName}
+                     onClick={() => {
+                         setSecondLevelOpen(!secondLevelOpen);
+                         if (secondLevelOpen) {
+                             router.push(`/${firstPartOfPath}`);
+                         }
+                     }}
+                 >
+                    {secondCategory}
+                 </motion.div>
             {pages.map((thirdLevelItem) => {
+
                 const {_id, category, title, alias} = thirdLevelItem;
                 return (
-                    <div key={`third_level_key_${_id}`}>
-                        <FourthLevelMenu
-                            _id={_id}
-                            category={category}
-                            title={title}
-                            alias={alias}
-                            pathname={pathname}
-                        />
+                    <div
+                        key={`third_level_key_${_id}`}
+                        className={styles.thirdLevelWrapper}
+                    >
+                        <motion.div
+                            whileHover={{scale: 1.03}}
+                            whileTap={{scale: 0.95}}
+                            className={styles.fourthLevelWrapper}
+                        >
+                            <Link
+                                href={`/${firstPartOfPath}/${alias}`}
+                                className={styles.fourthLevelLink}
+                            />
+                            <FourthLevelMenu
+                                _id={_id}
+                                category={category}
+                                title={title}
+                                alias={alias}
+                                pathname={pathname}
+                                secondLevelOpened={secondLevelOpen}
+                            />
+                        </motion.div>
                     </div>
                 )
             })}

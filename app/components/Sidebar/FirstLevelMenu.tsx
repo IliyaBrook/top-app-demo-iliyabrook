@@ -3,14 +3,10 @@ import styles from './Sidebar.module.scss';
 import classNames from "classnames";
 import Link from "next/link";
 import {FirstLevelMenuProps} from "@/app/components/Sidebar/Sidebar.props";
-import {BuildSecondLevel} from "@/app/components/Sidebar/componentsOld/BuildSecondLevel";
 import {SecondLevelMenu} from "@/app/components/Sidebar/SecondLevelMenu";
-import {motion} from 'framer-motion';
 
 export const FirstLevelMenu = ({pagesMenuData, pages, icon, route, name, pathname}: FirstLevelMenuProps) => {
-
     const menuPathName = pathname.split('/')[1];
-
     return (
         <li
             key={`first_level_key_${pages}`}
