@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from './Sidebar.module.scss';
 import {motion } from 'framer-motion';
 import {SecondLevelProps} from "@/app/components/Sidebar/Sidebar.props";
@@ -8,11 +8,13 @@ import {ThirdLevelMenu} from "@/app/components/Sidebar/ThirdLevelMenu";
 
 export const SecondLevelMenu = ({secondLevelData, pathname, isOpened}: SecondLevelProps) => {
 
+    const [showSecondLevelBorder, setShowSecondLevelBorder] = useState(isOpened);
+
     return (
         <motion.ul
             className={classnames([
                 styles.secondWrapper,
-                {[styles.borderActiveLevel]: isOpened}
+                {[styles.borderActiveLevel]: showSecondLevelBorder}
             ])}
         >
             {secondLevelData.map((secondLevelItem, idx) => {
@@ -27,6 +29,7 @@ export const SecondLevelMenu = ({secondLevelData, pathname, isOpened}: SecondLev
                                 _id={_id}
                                 isOpened={isOpened}
                                 pathname={pathname}
+                                setShowSecondLevelBorder={setShowSecondLevelBorder}
                                 index={idx}
                             />
                         </motion.div>

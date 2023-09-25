@@ -89,6 +89,7 @@ export interface ThirdLevelProps {
     isOpened: boolean;
     pathname: string;
     index: number;
+    setShowSecondLevelBorder: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // MenuItem

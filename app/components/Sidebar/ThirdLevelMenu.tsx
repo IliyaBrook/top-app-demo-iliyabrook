@@ -1,13 +1,16 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {ThirdLevelProps} from "@/app/components/Sidebar/Sidebar.props";
 import {motion, useAnimation} from "framer-motion";
 import {FourthLevelMenu} from "@/app/components/Sidebar/FourthLevelMenu";
 import styles from './Sidebar.module.scss'
 import Link from "next/link";
 import {usePathname, useRouter} from "next/navigation";
+import classnames from "classnames";
+import {tr} from "date-fns/locale";
 
-export const ThirdLevelMenu = ({pages, _id, isOpened, index}: ThirdLevelProps) => {
-    const [secondLevelOpen, setSecondLevelOpen] = React.useState(false);
+
+export const ThirdLevelMenu = ({pages, _id, isOpened, index, setShowSecondLevelBorder}: ThirdLevelProps) => {
+    const [secondLevelOpen, setSecondLevelOpen] = useState(false);
     const variants = {
         open: {opacity: 1, y: 0},
         closed: {opacity: 0, y: "-100%"}
@@ -42,7 +45,10 @@ export const ThirdLevelMenu = ({pages, _id, isOpened, index}: ThirdLevelProps) =
                      onClick={() => {
                          setSecondLevelOpen(!secondLevelOpen);
                          if (secondLevelOpen) {
+                             setShowSecondLevelBorder(true);
+                         }else {
                              router.push(`/${firstPartOfPath}`);
+                             setShowSecondLevelBorder(false);
                          }
                      }}
                  >
