@@ -2,6 +2,10 @@
   border-left: 1px solid #DFDFDF;
 }
 
+.borderInactiveLevel {
+  border-left: none;
+}
+
 .firstLevelActive {
   svg {
     fill: var(--active);
@@ -36,7 +40,6 @@
           width: 100%;
         }
       }
-
       .secondWrapper {
         margin-top: 5px;
         list-style: none;
@@ -45,7 +48,7 @@
         width: fit-content;
         margin-left: 3rem;
         padding: 0 0 0 5px;
-        @extend .borderActiveLevel;
+
 
         .secondLevelName {
           cursor: pointer;
@@ -63,7 +66,7 @@
             }
           }
           .pageLinkWrapper{
-            
+            margin-left: 10px;
           }
         }
       }
