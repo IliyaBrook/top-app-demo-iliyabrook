@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     title: 'Products',
 };
 
-export default async function PageProduct({params}: {params: {alias: string}}): Promise<ReactElement> {
+export default async function PageServices({params}: {params: {alias: string}}): Promise<ReactElement> {
     const page: IGetPageResponse | null = await getPage(params.alias);
 
     if (!page) {
@@ -17,7 +17,7 @@ export default async function PageProduct({params}: {params: {alias: string}}): 
 
     return (
         <div>
-            <h1>Courses</h1>
+            <h1>services</h1>
         </div>
     )
 }

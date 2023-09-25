@@ -9,23 +9,6 @@ import {ThirdLevelMenu} from "@/app/components/Sidebar/ThirdLevelMenu";
 import {usePathname} from "next/navigation";
 
 export const SecondLevelMenu = ({secondLevelData, pathname, isOpened}: SecondLevelProps) => {
-    const controls = useAnimation();
-    const variants = {
-        open: { opacity: 1, y: 0 },
-        closed: { opacity: 0, y: "-100%" }
-    };
-    // const variants = {
-    //     open: { opacity: 1, x: 0, scale: 1, rotate: 0 },
-    //     closed: { opacity: 0, x: "-100%", scale: 0.8, rotate: 90 }
-    // };
-
-    useEffect(() => {
-        if (isOpened) {
-            controls.start({opacity: 1, y: 0});
-        } else {
-            controls.start({opacity: 0, y: 100});
-        }
-    }, [isOpened]);
 
     return (
         <motion.ul
@@ -36,16 +19,9 @@ export const SecondLevelMenu = ({secondLevelData, pathname, isOpened}: SecondLev
         >
             {secondLevelData.map((secondLevelItem, idx) => {
                 const {_id, pages} = secondLevelItem;
-                console.log('second_level_id: ', _id)
                 return (
                     <motion.li
-                        layout
                         key={`second_level_key_${_id.secondCategory}`}
-                        initial="closed"
-                        animate={controls}
-                        exit="closed"
-                        variants={variants}
-                        transition={{ delay: idx/2 * 0.1 }}
                     >
                         <motion.div>
                             <ThirdLevelMenu
@@ -53,6 +29,7 @@ export const SecondLevelMenu = ({secondLevelData, pathname, isOpened}: SecondLev
                                 _id={_id}
                                 isOpened={isOpened}
                                 pathname={pathname}
+                                index={idx}
                             />
                         </motion.div>
                     </motion.li>

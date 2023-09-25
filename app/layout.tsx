@@ -28,7 +28,6 @@ export default async function RootLayout({children}: {
     const firstLevelMenuData = await Promise.allSettled(firstLevelMenu.map(async (menu) => {
         const menuId = menu.id;
         const pagesMenuData = await getMenu(menuId);
-        console.log('pagesMenuData:', JSON.stringify(pagesMenuData));
         return {
             params: {pages: menu.route, pagesMenuData},
         };

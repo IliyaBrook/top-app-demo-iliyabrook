@@ -87,6 +87,7 @@ export interface ThirdLevelProps {
     _id: ThirdLevelDataId;
     isOpened: boolean;
     pathname: string;
+    index: number;
 }
 
 // MenuItem

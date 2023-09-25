@@ -5,10 +5,13 @@ import {useRouter} from "next/navigation";
 import Link from "next/link";
 
 export const FourthLevelMenu = ({_id, category, title, alias, pathname}: SideBarPage) => {
-    console.log('FourthLevelMenu: pathname ', pathname)
-    console.log('FourthLevelMenu: alias ', alias)
     const router = useRouter();
     const isOpened = true
+
+    const variants = {
+        open: {opacity: 1, y: 0},
+        closed: {opacity: 0, y: "-100%"}
+    };
 
     return (
         <>

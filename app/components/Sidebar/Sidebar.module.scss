@@ -23,15 +23,29 @@
   .firstLevelList {
     padding: 0;
     list-style: none;
-    .secondWrapper {
-      margin-top: 5px;
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      width: fit-content;
-      margin-left: 3rem;
-      padding: 0 0 0 5px ;
-      @extend .borderActiveLevel;
+
+    .firstLevelWrapper{
+      .firstLevelName{
+        position: relative;
+        .firstLevelLink{
+          position: absolute;
+          height: 125%;
+          width: 100%;
+        }
+      }
+      .secondWrapper {
+        margin-top: 5px;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        margin-left: 3rem;
+        padding: 0 0 0 5px ;
+        @extend .borderActiveLevel;
+        .secondLevelName{
+          cursor: pointer;
+        }
+      }
     }
   }
 }
