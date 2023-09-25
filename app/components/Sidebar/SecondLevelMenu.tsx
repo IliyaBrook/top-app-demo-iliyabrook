@@ -36,6 +36,7 @@ export const SecondLevelMenu = ({secondLevelData, pathname, isOpened}: SecondLev
         >
             {secondLevelData.map((secondLevelItem, idx) => {
                 const {_id, pages} = secondLevelItem;
+                console.log('second_level_id: ', _id)
                 return (
                     <motion.li
                         layout
@@ -51,6 +52,7 @@ export const SecondLevelMenu = ({secondLevelData, pathname, isOpened}: SecondLev
                                 pages={pages}
                                 _id={_id}
                                 isOpened={isOpened}
+                                pathname={pathname}
                             />
                         </motion.div>
                     </motion.li>

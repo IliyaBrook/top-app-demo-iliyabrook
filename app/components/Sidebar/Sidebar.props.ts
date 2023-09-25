@@ -5,6 +5,7 @@ export interface SideBarPage {
     title: string;
     _id: string;
     category: string;
+    pathname: string;
 }
 
 export interface SecondCategory {
@@ -85,6 +86,7 @@ export interface ThirdLevelProps {
     pages: ThirdLevelDataPages[];
     _id: ThirdLevelDataId;
     isOpened: boolean;
+    pathname: string;
 }
 
 // MenuItem

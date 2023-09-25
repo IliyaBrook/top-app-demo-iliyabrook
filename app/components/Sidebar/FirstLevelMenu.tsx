@@ -13,6 +13,7 @@ export const FirstLevelMenu = ({pagesMenuData, pages, icon, route, name, pathnam
 
     return (
         <li
+            key={`first_level_key_${pages}`}
             className={classNames([
                 styles.sideBarLi,
                 {[styles.firstLevelActive]: menuPathName === route},
