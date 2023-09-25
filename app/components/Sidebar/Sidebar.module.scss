@@ -57,16 +57,24 @@
         .thirdLevelWrapper {
           .fourthLevelWrapper {
             position: relative;
-            margin: 5px 0;
+            margin: 5px 0 0 10px;
             width: fit-content;
             .fourthLevelLink{
               position: absolute;
               height: 100%;
               width: 100%;
+              background: red;
             }
           }
-          .pageLinkWrapper{
-            margin-left: 10px;
+          .thirdLevelTitle{
+
+          }
+          .pageLink{
+            cursor: pointer;
+            margin: 5px 0 0 10px;
+            .nextLink{
+              margin-left: 50px;
+            }
           }
         }
       }

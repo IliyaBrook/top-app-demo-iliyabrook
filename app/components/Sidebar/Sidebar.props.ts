@@ -5,7 +5,6 @@ export interface SideBarPage {
     title: string;
     _id: string;
     category: string;
-    pathname: string;
     secondLevelOpened: boolean;
 }
 

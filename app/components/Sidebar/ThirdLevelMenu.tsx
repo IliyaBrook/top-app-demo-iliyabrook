@@ -63,8 +63,6 @@ export const ThirdLevelMenu = ({pages, _id, isOpened, index, setShowSecondLevelB
                         className={styles.thirdLevelWrapper}
                     >
                         <motion.div
-                            whileHover={{scale: 1.03}}
-                            whileTap={{scale: 0.95}}
                             className={styles.fourthLevelWrapper}
                         >
                             <Link
@@ -76,7 +74,6 @@ export const ThirdLevelMenu = ({pages, _id, isOpened, index, setShowSecondLevelB
                                 category={category}
                                 title={title}
                                 alias={alias}
-                                pathname={pathname}
                                 secondLevelOpened={secondLevelOpen}
                             />
                         </motion.div>
