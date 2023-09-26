@@ -39,22 +39,28 @@ export const FourthLevelMenu = ({_id, category, title, alias, secondLevelOpened}
                 <div
                     className={styles.thirdLevelWrapper}
                 >
-                    <div className={styles.thirdLevelTitle}>
-                        {title}
-                    </div>
-                    {/*<motion.div>*/}
-                    {/*    <Link href={`/${pathname}/${alias}`}*/}
-                    {/*          className={styles.pageLink}*/}
-                    {/*    />*/}
-                    {/*    {pages?.category}*/}
-                    {/*</motion.div>*/}
-                    {isCurrentPage && pages && (
-                        <div
-                            className={styles.pageLink}
+                    <div className={styles.fifthWrapper}>
+                        <motion.div
+                            className={styles.thirdLevelTitle}
                         >
-                            {pages.category}
-                        </div>
-                    )}
+                            {title}
+                        </motion.div>
+                        {/*<motion.div>*/}
+                        {/*    <Link href={`/${pathname}/${alias}`}*/}
+                        {/*          className={styles.pageLink}*/}
+                        {/*    />*/}
+                        {/*    {pages?.category}*/}
+                        {/*</motion.div>*/}
+                        {isCurrentPage && pages && (
+                            <motion.div
+                                whileHover={{scale: 1.03}}
+                                whileTap={{scale: 0.95}}
+                                className={styles.pageLink}
+                            >
+                                {pages.category}
+                            </motion.div>
+                        )}
+                    </div>
                 </div>
             )}
         </>

@@ -4,8 +4,10 @@ import classNames from "classnames";
 import Link from "next/link";
 import {FirstLevelMenuProps} from "@/app/components/Sidebar/Sidebar.props";
 import {SecondLevelMenu} from "@/app/components/Sidebar/SecondLevelMenu";
+import {useRouter} from "next/navigation";
 
 export const FirstLevelMenu = ({pagesMenuData, pages, icon, route, name, pathname}: FirstLevelMenuProps) => {
+    const router = useRouter();
     const menuPathName = pathname.split('/')[1];
     return (
         <li
@@ -18,11 +20,14 @@ export const FirstLevelMenu = ({pagesMenuData, pages, icon, route, name, pathnam
         >
 
             <div className={styles.firstLevelWrapper}>
-
-
-                <span className={styles.firstLevelName}>
+                <span
+                    className={styles.firstLevelName}
+                    onClick={() => {
+                        router.push(`/${route}`);
+                    } }
+                >
                     {icon as React.ReactNode}
-                    <Link href={`/${pages}`} className={styles.firstLevelLink}/>
+                    {/*<Link href={`/${pages}`} className={styles.firstLevelLink}/>*/}
                     {name}
                 </span>
                 <SecondLevelMenu

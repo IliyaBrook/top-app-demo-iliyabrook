@@ -5,6 +5,7 @@ import {FourthLevelMenu} from "@/app/components/Sidebar/FourthLevelMenu";
 import styles from './Sidebar.module.scss'
 import Link from "next/link";
 import {usePathname, useRouter} from "next/navigation";
+
 import classnames from "classnames";
 import {tr} from "date-fns/locale";
 
@@ -64,11 +65,10 @@ export const ThirdLevelMenu = ({pages, _id, isOpened, index, setShowSecondLevelB
                     >
                         <motion.div
                             className={styles.fourthLevelWrapper}
+                            onClick={ () => { router.push(`/${firstPartOfPath}/${alias}`)}}
+                            whileHover={{scale: 1.03}}
+                            whileTap={{scale: 0.95}}
                         >
-                            <Link
-                                href={`/${firstPartOfPath}/${alias}`}
-                                className={styles.fourthLevelLink}
-                            />
                             <FourthLevelMenu
                                 _id={_id}
                                 category={category}

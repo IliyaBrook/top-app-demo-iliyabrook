@@ -11,21 +11,17 @@
     fill: var(--active);
   }
 }
-
 .firstLevelInactive {
   svg {
     fill: var(--sidenavInactive);
   }
 }
-
 .sideBarWrapper {
   font-size: 16px;
   margin-left: 10px;
-
   svg {
     margin-right: 10px;
   }
-
   .firstLevelList {
     padding: 0;
     list-style: none;
@@ -33,12 +29,6 @@
     .firstLevelWrapper {
       .firstLevelName {
         position: relative;
-
-        .firstLevelLink {
-          position: absolute;
-          height: 125%;
-          width: 100%;
-        }
       }
       .secondWrapper {
         margin-top: 5px;
@@ -48,32 +38,27 @@
         width: fit-content;
         margin-left: 3rem;
         padding: 0 0 0 5px;
-
-
         .secondLevelName {
           cursor: pointer;
         }
-
         .thirdLevelWrapper {
           .fourthLevelWrapper {
             position: relative;
             margin: 5px 0 0 10px;
             width: fit-content;
-            .fourthLevelLink{
-              position: absolute;
-              height: 100%;
-              width: 100%;
-              background: red;
-            }
-          }
-          .thirdLevelTitle{
-
-          }
-          .pageLink{
             cursor: pointer;
-            margin: 5px 0 0 10px;
-            .nextLink{
-              margin-left: 50px;
+          }
+          .fifthWrapper{
+            .thirdLevelTitle{
+              margin: 5px 0 0 10px;
+            }
+            .pageLink{
+              margin: 5px 0 0 40px;
+              z-index: 1;
+              cursor: pointer;
+              &:hover{
+                color: var(--primary);
+              }
             }
           }
         }
